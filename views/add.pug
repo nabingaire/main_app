@@ -1,0 +1,73 @@
+//-Nabin Gaire
+//-0920487
+//-2024F-CSD-3103-01
+
+doctype html
+
+html
+  head
+    title Add User
+
+    //- Link to Bootstrap CSS for styling
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css")
+
+  body
+    .container.mt-5
+
+      h1 Add New User
+
+      form(action="/add" method="POST")
+
+        .form-group
+          label(for="lastName") Last Name
+          input.form-control(type="text" name="lastName" required)
+
+        .form-group
+          label(for="firstName") First Name
+          input.form-control(type="text" name="firstName" required)
+
+        .form-group
+          label(for="dateOfBirth") Date of Birth
+          //- "date" type to ensure user picks a valid date
+          input.form-control(type="date" name="dateOfBirth" required)
+
+        .form-group
+          label(for="address1") Address Line 1
+          input.form-control(type="text" name="address1")
+
+        .form-group
+          label(for="address2") Address Line 2
+          input.form-control(type="text" name="address2")
+
+        .form-group
+          label(for="city") City
+          input.form-control(type="text" name="city")
+
+        .form-group
+          label(for="postalCode") Postal Code
+          input.form-control(type="text" name="postalCode")
+
+        .form-group
+          label(for="country") Country
+          input.form-control(type="text" name="country")
+
+        .form-group
+          label(for="phoneNumber") Phone Number
+          //- "tel" type for phone number input to support various formats
+          input.form-control(type="tel" name="phoneNumber")
+
+        .form-group
+          label(for="email") Email
+          //- "email" type to prompt users to enter a valid email format
+          input.form-control(type="email" name="email")
+
+        .form-group
+          label(for="notes") Notes
+          //- Textarea for additional notes (multi-line)
+          textarea.form-control(name="notes")
+
+        //- Submit button to save the new user
+        button.btn.btn-primary(type="submit") Submit
+
+        //- Back button to return to the main user list page
+        a.btn.btn-secondary(href="/") Back

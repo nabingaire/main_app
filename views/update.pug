@@ -1,0 +1,70 @@
+//-Nabin Gaire
+//-0920487
+//-2024F-CSD-3103-01
+
+doctype html
+html
+  head
+    title Update User
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css")
+
+  body
+    .container.mt-5
+      h1 
+        | Update User
+        
+        //- Inline delete form positioned next to the title
+        form(action=`/delete/${user._id}` method="POST" style="display:inline; margin-left: 20px;")
+          button.btn.btn-danger(type="submit") Delete
+
+      //- Form for updating user details
+      form(action=`/update/${user._id}` method="POST")
+
+        .form-group
+          label(for="lastName") Last Name
+          input.form-control(type="text" name="lastName" value=user.lastName required)
+
+        .form-group
+          label(for="firstName") First Name
+          input.form-control(type="text" name="firstName" value=user.firstName required)
+
+        .form-group
+          label(for="dateOfBirth") Date of Birth
+          //- Convert date to string format compatible with the date input field
+          input.form-control(type="date" name="dateOfBirth" value=user.dateOfBirth.toISOString().split('T')[0] required)
+
+        .form-group
+          label(for="address1") Address Line 1
+          input.form-control(type="text" name="address1" value=user.address1)
+
+        .form-group
+          label(for="address2") Address Line 2
+          input.form-control(type="text" name="address2" value=user.address2)
+
+        .form-group
+          label(for="city") City
+          input.form-control(type="text" name="city" value=user.city)
+
+        .form-group
+          label(for="postalCode") Postal Code
+          input.form-control(type="text" name="postalCode" value=user.postalCode)
+
+        .form-group
+          label(for="country") Country
+          input.form-control(type="text" name="country" value=user.country)
+
+        .form-group
+          label(for="phoneNumber") Phone Number
+          input.form-control(type="tel" name="phoneNumber" value=user.phoneNumber)
+
+        .form-group
+          label(for="email") Email
+          input.form-control(type="email" name="email" value=user.email)
+
+        .form-group
+          label(for="notes") Notes
+          //- Pre-fill textarea with user's existing notes
+          textarea.form-control(name="notes")= user.notes
+
+        button.btn.btn-primary(type="submit") Update
+        a.btn.btn-secondary(href="/") Back

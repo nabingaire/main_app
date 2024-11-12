@@ -1,0 +1,59 @@
+//-Nabin Gaire
+//-0920487
+//-2024F-CSD-3103-01
+
+doctype html
+html
+  head
+    title User Management
+
+    //- Link to the Bootstrap CSS library 
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css")
+  body
+    .container.mt-5
+
+      h1 User List
+
+      a.btn.btn-primary(href="/add") Add New User
+
+      table.table.table-striped.mt-3
+        //- Table header for column titles
+        thead
+          tr
+            th Last Name         
+            th First Name        
+            th Date of Birth     
+            th Address1          
+            th Address2          
+            th City              
+            th Postal Code       
+            th Country           
+            th Phone Number      
+            th Email             
+            th Notes             
+            th Actions           
+
+        tbody
+          //- Loop through the list of users and create a row for each user
+          each user in users
+            tr
+              td= user.lastName
+              td= user.firstName
+              td= user.dateOfBirth ? user.dateOfBirth.toDateString() : '' 
+              td= user.address1
+              td= user.address2
+              td= user.city
+              td= user.postalCode
+              td= user.country
+              td= user.phoneNumber
+              td= user.email
+              td= user.notes
+
+              td
+                //- Link to the update page for the user
+                a.btn.btn-secondary(href=`/update/${user._id}`) Edit
+                
+                //- Inline form to handle the delete action for the user
+                form(action=`/delete/${user._id}` method="POST" style="display:inline")
+                  //- Delete button
+                  button.btn.btn-danger(type="submit") Delete
